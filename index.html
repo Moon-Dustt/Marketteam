@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marketeam – Unlock Top Marketing Talent</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-logo">
+      <i class="fa-solid fa-bolt-lightning logo-icon"></i>
+      <span>Marketeam</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Your Team</a></li>
+      <li><a href="#">Solutions</a></li>
+      <li><a href="#">Blog</a></li>
+      <li><a href="#">Pricing</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="#" class="btn-login">Log In</a>
+      <a href="#" class="btn-join">Join Now <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="grid-overlay"></div>
+
+    <!-- Left content -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <i class="fa-solid fa-fire-flame-curved"></i>
+        <span>Trusted by 500+ companies</span>
+      </div>
+      <h1 class="hero-headline">
+        Unlock Top<br/>
+        Marketing Talent<br/>
+        You Thought Was<br/>
+        Out of Reach –<br/>
+        <span class="highlight">Now Just One<br/>Click Away!</span>
+      </h1>
+      <a href="#" class="btn-start">
+        Start Project <i class="fa-solid fa-chevron-right"></i>
+      </a>
+    </div>
+
+    <!-- Right orbit -->
+    <div class="orbit-scene">
+      <div class="orbit-canvas" id="orbitCanvas">
+
+        <!-- Center stat -->
+        <div class="orbit-center">
+          <span class="stat-number" id="statNumber">20k+</span>
+          <span class="stat-label">Specialists</span>
+        </div>
+
+        <!-- Ring 1 (inner) — spins CW, items counter-rotate CCW -->
+        <div class="orbit-ring ring-1" id="ring1">
+          <div class="orbit-item avatar-item" data-angle="0">
+            <img src="https://i.pravatar.cc/60?img=47" alt="specialist"/>
+          </div>
+          <div class="orbit-item avatar-item" data-angle="120">
+            <img src="https://i.pravatar.cc/60?img=32" alt="specialist"/>
+          </div>
+          <div class="orbit-item avatar-item" data-angle="240">
+            <img src="https://i.pravatar.cc/60?img=21" alt="specialist"/>
+          </div>
+        </div>
+
+        <!-- Ring 2 (outer) — spins CCW, items counter-rotate CW -->
+        <div class="orbit-ring ring-2" id="ring2">
+          <div class="orbit-item avatar-item" data-angle="60">
+            <img src="https://i.pravatar.cc/60?img=5" alt="specialist"/>
+          </div>
+          <div class="orbit-item avatar-item" data-angle="180">
+            <img src="https://i.pravatar.cc/60?img=11" alt="specialist"/>
+          </div>
+          <div class="orbit-item app-item" data-angle="300">
+            <i class="fa-brands fa-figma"></i>
+          </div>
+          <div class="orbit-item app-item" data-angle="45">
+            <i class="fa-brands fa-slack"></i>
+          </div>
+          <div class="orbit-item app-item" data-angle="225">
+            <i class="fa-solid fa-chart-line"></i>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUSTED BY -->
+  <div class="trusted-bar">
+    <span class="trusted-label">Trusted by</span>
+    <div class="brand-logos">
+      <span><i class="fa-solid fa-triangle-exclamation"></i> Dreamure</span>
+      <span><i class="fa-solid fa-gamepad"></i> SWITCH.WIN</span>
+      <span><i class="fa-solid fa-globe"></i> Sphere</span>
+      <span><i class="fa-solid fa-map-pin"></i> PinSpace</span>
+      <span><i class="fa-regular fa-eye"></i> Visionix</span>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
