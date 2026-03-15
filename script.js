@@ -31,32 +31,25 @@ document.querySelectorAll('a, button, .orbit-item, .brand-logos span').forEach(e
 
 /* ── ORBIT ITEM POSITIONING ─────────────────── */
 /*
-  Strategy:
-  - Each ring has a known radius (half its CSS width).
-  - Each .orbit-item has data-angle (degrees, 0 = top).
-  - We compute the item's center coordinates on the ring
-    then offset by half the item's own size so the center
-    sits exactly ON the ring border line.
-  - Items are positioned relative to their parent ring,
-    which is itself centered via margin:-radius.
+  Reads the ring's actual rendered width at runtime so
+  it works correctly at every breakpoint automatically.
 */
 
-function positionItems(ringEl, radius) {
+function positionItems(ringEl) {
+  // radius = half the ring's live rendered width
+  const radius = ringEl.offsetWidth / 2;
+  if (radius === 0) return; // not rendered yet
+
   ringEl.querySelectorAll('.orbit-item').forEach(item => {
     const angleDeg = parseFloat(item.dataset.angle) || 0;
-    // 0° = top → subtract 90° so angle 0 maps to 12-o'clock
     const rad = (angleDeg - 90) * Math.PI / 180;
 
-    // Point on circumference (relative to ring center)
     const cx = radius * Math.cos(rad);
     const cy = radius * Math.sin(rad);
 
-    // Item half-sizes (use offsetWidth/Height after render, fallback to defaults)
-    const hw = (item.offsetWidth  || (item.classList.contains('avatar-item') ? 50 : 42)) / 2;
-    const hh = (item.offsetHeight || (item.classList.contains('avatar-item') ? 50 : 42)) / 2;
+    const hw = item.offsetWidth  / 2 || (item.classList.contains('avatar-item') ? 19 : 17);
+    const hh = item.offsetHeight / 2 || (item.classList.contains('avatar-item') ? 19 : 17);
 
-    // In the ring coord system, ring center = (radius, radius)
-    // because the ring div's top-left is at (-radius, -radius) from its CSS center
     item.style.left = (radius + cx - hw) + 'px';
     item.style.top  = (radius + cy - hh) + 'px';
   });
@@ -65,16 +58,32 @@ function positionItems(ringEl, radius) {
 function initOrbits() {
   const r1 = document.getElementById('ring1');
   const r2 = document.getElementById('ring2');
-  // ring-1 is 220px wide → radius 110
-  // ring-2 is 420px wide → radius 210
-  if (r1) positionItems(r1, 110);
-  if (r2) positionItems(r2, 210);
+  if (r1) positionItems(r1);
+  if (r2) positionItems(r2);
 }
 
-// Position on load (before fonts finish, sizes are still correct for px-fixed items)
 initOrbits();
 window.addEventListener('load', initOrbits);
 window.addEventListener('resize', initOrbits);
+
+
+/* ── HAMBURGER MENU ─────────────────────────── */
+const hamburger  = document.getElementById('hamburger');
+const mobileNav  = document.getElementById('mobileNav');
+
+if (hamburger && mobileNav) {
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('open');
+    mobileNav.classList.toggle('open');
+  });
+  // close when a link is tapped
+  mobileNav.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => {
+      hamburger.classList.remove('open');
+      mobileNav.classList.remove('open');
+    });
+  });
+}
 
 
 /* ── BUTTON RIPPLE EFFECT ───────────────────── */
